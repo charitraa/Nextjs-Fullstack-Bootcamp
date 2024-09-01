@@ -2,6 +2,8 @@ import Link from 'next/link';
 import React from 'react';
 import { FaEye } from 'react-icons/fa';
 import User from './Userinterface';
+import Image from 'next/image';
+import image from '../../../../../public/next.svg'
 
 export default async function UserPage() {
   const res = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -17,6 +19,7 @@ export default async function UserPage() {
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Image</th>
             <th>action</th>
           </tr>
         </thead>
@@ -26,6 +29,9 @@ export default async function UserPage() {
               <td>{user.id}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>
+              <td>
+                <Image src={image} alt=''/>
+              </td>
               <td>
                 <Link href={`/admin-panel/dashboard/users/${user.id}`} className='btn'><FaEye/></Link>
               </td>
